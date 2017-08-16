@@ -12,5 +12,5 @@ This will create files like "character_33.*" - enter the number for the new file
 
 3) Copy the *.txt files into your minetest-0.4.16/mods/simple_skins/meta directory
 4) Copy the .png files into your minetest-0.4.16/mods/simple_skins/textures directory
-5) Restart your server
+5) Restart your minetest server
 
