@@ -1,5 +1,5 @@
 # addskins
-Tool to download all the files of the desired type from a web page
+Tool to add skins to a minetest server using the simple_skions mod
 
 # How to use it:
 
