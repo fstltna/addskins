@@ -6,7 +6,7 @@ Tool to add skins to a minetest server that is using the simple_skins mod. Only 
 1) CD into the directory the source files are in
 2) Run:
 
-addskins <starting number>
+addskins \<starting number\>
 
 This will create files like "character_33.*" - enter the number for the new files to start at!
 
