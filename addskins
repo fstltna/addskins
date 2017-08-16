@@ -1,0 +1,66 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use File::Copy;
+
+my $StartNum=0;		# Number to start at
+my $CurrentNum=0;	# Current file number
+my $fh;
+
+sub ConvertFile
+{
+	# Get argument
+	my ($curFile) = @_;
+	# Get source file name
+	my $SourceName = substr($curFile, 0, length($curFile) - 4);
+	print "Working on $curFile\n";
+	my $baseName = "character_$CurrentNum";
+	# Create graphic file
+	copy($curFile, "$baseName\.png") or die "Copy failed: $!";
+	# Create name file
+	open($fh, ">", "$baseName\.txt") or die "Could not open file '$baseName\.txt' $!";
+	$SourceName =~ s/\s//g;
+	print $fh "name = \"$SourceName\",\n";
+	print $fh "author = \"$SourceName\",\n";
+	close $fh;
+}
+
+my $num_args = $#ARGV + 1;
+if ($num_args != 1) {
+    print "Incorrect number of arguments\n";
+    print "Usage: addskins <starting>\n";
+    exit;
+}
+
+# Read in argument
+$StartNum=$ARGV[0];
+print "Starting at $StartNum\n";
+
+print "Processing current directory\n";
+
+opendir DIR, "." or die "cannot open current dir: $!";
+my @file= readdir DIR;
+closedir DIR;
+
+$CurrentNum = $StartNum;
+# Loop for each file in directory
+foreach (@file)
+{
+	my $curFile = $_;
+	# Make sure it is a .png file
+	if (substr($curFile, -3) eq "png")
+	{
+		# It is a .png, make sure it is not already processed
+		if (substr($curFile, 0, 10) ne "character_")
+		{
+			# Ok, we are good to go...
+			ConvertFile($curFile);
+			$CurrentNum++;
+		}
+	}
+}
+
+my $NumSeen = $CurrentNum - $StartNum;
+print "Number processed: $NumSeen\n";
+
+exit 0;
