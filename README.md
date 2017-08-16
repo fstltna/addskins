@@ -1,5 +1,5 @@
 # addskins
-Tool to add skins to a minetest server using the simple_skions mod
+Tool to add skins to a minetest server that is using the simple_skins mod
 
 # How to use it:
 
