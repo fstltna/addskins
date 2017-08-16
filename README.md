@@ -1,5 +1,5 @@
 # addskins
-Tool to add skins to a minetest server that is using the simple_skins mod
+Tool to add skins to a minetest server that is using the simple_skins mod. Only tested under Ubuntu Linux
 
 # How to use it:
 
